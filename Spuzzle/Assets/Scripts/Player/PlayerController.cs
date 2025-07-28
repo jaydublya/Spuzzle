@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
     public float wallNormalThreshold = 0.3f;
     public float jumpForce = 1000;
     public float toungSpeed = 0.05f;
-    public float dashCoolDown = 1.0f;
+    public float dashCoolDown = 1.5f;
+    public float toungCoolDown = 0.75f;
 
     public string toungState;
 
@@ -52,6 +53,15 @@ public class PlayerController : MonoBehaviour
                 dashEffect.transform.localPosition = Vector3.zero;
             }
         }
+        if(!canAttack)
+        {
+            toungCoolDown -= Time.deltaTime;
+            if(toungCoolDown <= 0)
+            {
+                canAttack = true;
+                toungCoolDown = 0.75f;
+            }
+        }
         if (!isClimbing)
         {
             transform.Translate(Vector3.forward * speed * verticalInput * Time.deltaTime);
@@ -84,11 +94,11 @@ public class PlayerController : MonoBehaviour
         {
             if(toungState == "Extending")
             {
-                toung.Translate(Vector3.up * toungSpeed);
+                toung.Translate(Vector3.up * toungSpeed * Time.deltaTime);
             }
             else if(toungState == "Retracting")
             {
-                toung.Translate(Vector3.up * -toungSpeed);
+                toung.Translate(Vector3.up * -toungSpeed * Time.deltaTime);
             }
 
             if (toung.localPosition.z >= 2)
@@ -99,7 +109,6 @@ public class PlayerController : MonoBehaviour
             {
                 toung.localPosition = Vector3.zero;
                 isAttacking = false;
-                canAttack = true;
             }
         }
     }
