@@ -1,6 +1,7 @@
 ﻿using System;
+using UnityEngine;
 
-public class PauseMenu : MonoBehavior
+public class PauseMenu: MonoBehaviour
 {
 	public GameObject PausePanel;
 	
