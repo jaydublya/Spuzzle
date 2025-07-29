@@ -43,21 +43,6 @@ public class PlayerController : MonoBehaviour
     {
         float verticalInput = Input.GetAxis("Vertical");
 
-        if (isClimbing)
-        {
-            rb.useGravity = false;
-            canJump = false;
-            canDash = false;
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-        }
-        else
-        {
-            rb.useGravity = true;
-            canJump = true;
-            canDash = true;
-        }
-
         if(!canDash)
         {
             dashCoolDown -= Time.deltaTime;
@@ -127,26 +112,53 @@ public class PlayerController : MonoBehaviour
                 toungState = "Idle";
             }
         }
+
+        if (isClimbing)
+        {
+            rb.useGravity = false;
+            canJump = false;
+            canDash = false;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+        else
+        {
+            rb.useGravity = true;
+            canDash = true;
+        }
     }
 
     // Checks if the player is climbing
 
     private void OnCollisionEnter(Collision collision)
     {
+        canJump = true;
         if (collision.gameObject.CompareTag("climbable"))
         {
-            foreach(ContactPoint contact in collision.contacts)
+            foreach (ContactPoint contact in collision.contacts)
             {
-                if (Mathf.Abs(contact.normal.y) < wallNormalThreshold) isClimbing = true;
-                else isClimbing = true;
+                if (Mathf.Abs(contact.normal.y) < wallNormalThreshold)
+                {
+                    isClimbing = true;
+                }
+                else
+                {
+                    isClimbing = false;
+                }
             }
         }
-        else isClimbing = false;
+        else
+        {
+            isClimbing = false;
+        }
         lastCollision = collision;
     }
     private void OnCollisionExit(Collision collision)
     {
-        isClimbing = false;
+        if(lastCollision.gameObject.CompareTag("climbable"))
+        {
+            isClimbing = false;
+        }
     }
 
 }
