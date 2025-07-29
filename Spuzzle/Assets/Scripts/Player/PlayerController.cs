@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private Collision lastCollision;
 
     private GameObject body;
+    private float verticalInput;
 
 
     // Start is called before the first frame update
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float verticalInput = Input.GetAxis("Vertical");
+        verticalInput = Input.GetAxis("Vertical");
 
         if(!canDash)
         {
@@ -87,7 +88,8 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(Vector3.up * Time.deltaTime * jumpForce, ForceMode.Impulse);
                 canJump = false;
             }
-        } else
+        }
+        else
         {
             transform.Translate(Vector3.up * speed * verticalInput * Time.deltaTime);
         }
