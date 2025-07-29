@@ -66,12 +66,20 @@ public class PlayerController : MonoBehaviour
         if (!isClimbing)
         {
             transform.Translate(Vector3.forward * speed * verticalInput * Time.deltaTime);
-            if (Input.GetKeyDown(KeyCode.E) && !isClimbing && canDash)
+            if (Input.GetKeyDown(KeyCode.E) && canDash && verticalInput != 0)
             {
                 dashEffect.Play();
                 dashEffect2.Play();
-                transform.Translate(Vector3.forward * speed * verticalInput * Time.deltaTime * dashSpeed);
-                dashEffect.transform.Translate(Vector3.back * speed * verticalInput * Time.deltaTime * dashSpeed);
+                if(verticalInput > 0)
+                {
+                    transform.Translate(Vector3.forward * Time.deltaTime * speed * dashSpeed);
+                    dashEffect.transform.Translate(Vector3.back * Time.deltaTime * speed * dashSpeed);
+                } else
+                {
+                    transform.Translate(Vector3.back * Time.deltaTime * speed * dashSpeed);
+                    dashEffect.transform.Translate(Vector3.forward * Time.deltaTime * speed * dashSpeed);
+                }
+    
                 canDash = false;
             }
             if (Input.GetKeyDown(KeyCode.Space) && canJump)
