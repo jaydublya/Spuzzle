@@ -6,6 +6,8 @@ TagManager:
   tags:
   - climbable
   - Lickable
+  - HealthIcon
+  - Collectable
   layers:
   - Default
   - TransparentFX
