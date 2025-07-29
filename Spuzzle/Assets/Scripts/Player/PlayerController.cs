@@ -132,7 +132,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.useGravity = true;
-            canDash = true;
         }
     }
 
