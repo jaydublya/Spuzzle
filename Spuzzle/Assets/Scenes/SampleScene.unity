@@ -1472,7 +1472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ce1e4560a3ed4144a086afea723870e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.4
+      value: 13.76
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ce1e4560a3ed4144a086afea723870e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1509,6 +1509,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1ce1e4560a3ed4144a086afea723870e, type: 3}
       propertyPath: m_Name
       value: enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1ce1e4560a3ed4144a086afea723870e, type: 3}
+      propertyPath: m_TagString
+      value: Lickable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1591,7 +1595,6 @@ MonoBehaviour:
   canJump: 0
   canDash: 1
   canAttack: 1
-  isAttacking: 0
 --- !u!54 &1299721527
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1787,7 +1790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80952840127831840a8d06ae75c9120f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8
+      value: -1.91
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80952840127831840a8d06ae75c9120f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1829,6 +1832,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 33f4980e72c0cd342a91b5672d1ea591, type: 2}
+    - target: {fileID: -4292154010595695564, guid: 80952840127831840a8d06ae75c9120f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.022
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 80952840127831840a8d06ae75c9120f, type: 3}
       propertyPath: m_Name
       value: pond
@@ -1931,6 +1938,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5a93373d5e1785e4fba98587e4be823c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1997309659}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5a93373d5e1785e4fba98587e4be823c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1997309662}
   m_SourcePrefab: {fileID: 100100000, guid: 5a93373d5e1785e4fba98587e4be823c, type: 3}
 --- !u!1001 &1966938363
 PrefabInstance:
@@ -1946,7 +1956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6681497908805914688ab583acd4b095, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.169
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6681497908805914688ab583acd4b095, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1984,6 +1994,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: duck
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6681497908805914688ab583acd4b095, type: 3}
+      propertyPath: m_TagString
+      value: Lickable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2015,12 +2029,24 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.009475353, y: 0.022450197, z: 0.008085313}
   m_Center: {x: -0.000019379395, y: 0.0012250972, z: 0.00019378899}
+--- !u!114 &1997309662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540515671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f598e0a1264aabe4e90c4f35e5686fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2002924244 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 80952840127831840a8d06ae75c9120f, type: 3}

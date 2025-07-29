@@ -18,13 +18,12 @@ public class PlayerController : MonoBehaviour
     public float dashCoolDown = 1.5f;
     public float toungCoolDown = 0.75f;
 
-    public string toungState;
+    public string toungState = "Idle";
 
     public bool isClimbing = false;
     public bool canJump;
     public bool canDash = true;
     public bool canAttack = true;
-    public bool isAttacking = false;
 
 
 
@@ -43,6 +42,22 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float verticalInput = Input.GetAxis("Vertical");
+
+        if (isClimbing)
+        {
+            rb.useGravity = false;
+            canJump = false;
+            canDash = false;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+        else
+        {
+            rb.useGravity = true;
+            canJump = true;
+            canDash = true;
+        }
+
         if(!canDash)
         {
             dashCoolDown -= Time.deltaTime;
@@ -62,12 +77,14 @@ public class PlayerController : MonoBehaviour
                 toungCoolDown = 0.75f;
             }
         }
+
         if (!isClimbing)
         {
             transform.Translate(Vector3.forward * speed * verticalInput * Time.deltaTime);
             if (Input.GetKeyDown(KeyCode.E) && !isClimbing && canDash)
             {
-                dashEffect.Play(); dashEffect2.Play();
+                dashEffect.Play();
+                dashEffect2.Play();
                 transform.Translate(Vector3.forward * speed * verticalInput * Time.deltaTime * dashSpeed);
                 dashEffect.transform.Translate(Vector3.back * speed * verticalInput * Time.deltaTime * dashSpeed);
                 canDash = false;
@@ -85,12 +102,11 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetMouseButton(0) && canAttack && !isClimbing)
         {
-            isAttacking = true;
             canAttack = false;
             toungState = "Extending";
         }
 
-        if(isAttacking)
+        if(toungState != "Idle")
         {
             if(toungState == "Extending")
             {
@@ -108,10 +124,12 @@ public class PlayerController : MonoBehaviour
             if(toung.localPosition.z <= 0)
             {
                 toung.localPosition = Vector3.zero;
-                isAttacking = false;
+                toungState = "Idle";
             }
         }
     }
+
+    // Checks if the player is climbing
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -119,35 +137,16 @@ public class PlayerController : MonoBehaviour
         {
             foreach(ContactPoint contact in collision.contacts)
             {
-                if(Mathf.Abs(contact.normal.y) < wallNormalThreshold)
-                {
-                    isClimbing = true;
-                    rb.useGravity = false;
-                    rb.linearVelocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
-                }
-                else
-                {
-                    canJump = true;
-                }
+                if (Mathf.Abs(contact.normal.y) < wallNormalThreshold) isClimbing = true;
+                else isClimbing = true;
             }
         }
-        else
-        {
-            isClimbing = false;
-            rb.useGravity = true;
-            canJump = true;
-        }
+        else isClimbing = false;
         lastCollision = collision;
     }
     private void OnCollisionExit(Collision collision)
     {
-        if(lastCollision.gameObject.CompareTag("climbable"))
-        {
-            isClimbing = false;
-            rb.useGravity = true;
-            canJump = false;
-        }
+        isClimbing = false;
     }
 
 }

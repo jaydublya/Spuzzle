@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - climbable
+  - Lickable
   layers:
   - Default
   - TransparentFX
