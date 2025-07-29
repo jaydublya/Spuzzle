@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public int itemsCollected;
     public GameObject pauseMenu;
     public GameObject gameOverScreen;
+    public GameObject collectableGroup;
     
     //This Script will start the game when the Start Button is clicked, end the game when the Quit Button is clicked, will make the game restart when the restart button is clicked, and will make the Game Over screen appear when Gluey is dead
    
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
         itemsCollected = 0;
         pauseMenu.SetActive(false);
         gameOverScreen.SetActive(false);
+        collectableGroup.SetActive(false);
     }
 
 
