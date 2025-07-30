@@ -13,13 +13,6 @@ public class StartButton : MonoBehaviour
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         startButton = GetComponent<Button>();
-        startButton.onClick.AddListener(StartGame);
-    }
-
-    public void StartGame()
-    {
-        Debug.Log("Game Start");
-        gameManager.isGameActive = true;
     }
 }
 
