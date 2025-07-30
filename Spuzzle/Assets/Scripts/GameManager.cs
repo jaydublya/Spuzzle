@@ -49,6 +49,12 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log("Game Restarted");
     }
-    
+
+    public void StartGame()
+    {
+        Debug.Log("Game Start");
+        isGameActive = true;
+    }
 }
