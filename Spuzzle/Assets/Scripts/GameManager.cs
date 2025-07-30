@@ -71,4 +71,12 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(true);
         Debug.Log("Game Paused");
     }
+
+    public void ContinueGame()
+    {
+        isGamePaused=false;
+        isGameActive=true;
+        Debug.Log("Game Unpaused");
+        pauseMenu.SetActive(false);
+    }
 }
