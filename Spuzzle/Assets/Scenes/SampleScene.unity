@@ -5039,12 +5039,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df418151997fa94fb8e4b9fbe3f8ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleScreen: {fileID: 776807868}
+  titleScreen: {fileID: 390284307}
   isGameActive: 0
   itemsCollected: 0
   pauseMenu: {fileID: 967582157}
   gameOverScreen: {fileID: 272024420}
-  collectableGroup: {fileID: 0}
+  collectableGroup: {fileID: 203128995}
   healthPoints: 5
   isGamePaused: 0
   restartButton: {fileID: 1467782088}
