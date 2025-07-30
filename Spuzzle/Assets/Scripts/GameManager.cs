@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int healthPoints = 5;
     public bool isGamePaused;
     public GameObject restartButton;
+    public TextMeshProUGUI healthText;
 
     public AudioClip songTwo;
     public AudioSource speaker;
@@ -40,7 +42,8 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             titleScreen.SetActive(false);
-            
+            healthText.text = "Health: " + healthPoints;
+
         }
     }
 

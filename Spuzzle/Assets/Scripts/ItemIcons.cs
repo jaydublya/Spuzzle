@@ -19,6 +19,8 @@ public class ItemIcons : MonoBehaviour
     {
         if (gameManager.isGameActive)
         {
+            int index = gameManager.itemsCollected;
+
             
            
         }
