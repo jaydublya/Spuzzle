@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = false;
         gameOverScreen.gameObject.SetActive(true);
-
+        Debug.Log("Game Over");
     }
 
     public void RestartGame()
@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Game Ended");
+        isGameActive = false;
+        isGamePaused = false;
     }
 
     public void PauseGame()
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(true);
         Debug.Log("Game Paused");
     }
+
 
     public void ContinueGame()
     {
