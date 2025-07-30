@@ -5,7 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - climbable
-  - Item
+  - Lickable
+  - HealthIcon
+  - Collectable
   layers:
   - Default
   - TransparentFX
