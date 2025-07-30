@@ -14848,6 +14848,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3213849241975380808, guid: b10dd83d9e9253146bcf3eeee01acaac, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2425ebfa08dde9c459fde8667b5aee3b, type: 2}
+    - target: {fileID: 3213849241975380808, guid: b10dd83d9e9253146bcf3eeee01acaac, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 111a78e9654b612418c6c86f64e0dd6e, type: 2}
     - target: {fileID: 5394153498466324620, guid: b10dd83d9e9253146bcf3eeee01acaac, type: 3}
       propertyPath: m_Name
       value: LightPost
