@@ -13,6 +13,7 @@ public class StartButton : MonoBehaviour
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         startButton = GetComponent<Button>();
+
     }
 }
 

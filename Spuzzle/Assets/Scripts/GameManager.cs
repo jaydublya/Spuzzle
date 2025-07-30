@@ -58,9 +58,4 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Start");
     }
 
-    public void OnApplicationQuit()
-    {
-        
-    }
-
 }
