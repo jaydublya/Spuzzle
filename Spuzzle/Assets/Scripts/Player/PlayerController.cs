@@ -18,13 +18,12 @@ public class PlayerController : MonoBehaviour
     public float dashCoolDown = 1.5f;
     public float toungCoolDown = 0.75f;
 
-    public string toungState;
+    public string toungState = "Idle";
 
     public bool isClimbing = false;
     public bool canJump;
     public bool canDash = true;
     public bool canAttack = true;
-    public bool isAttacking = false;
 
 
 
@@ -43,6 +42,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float verticalInput = Input.GetAxis("Vertical");
+
         if(!canDash)
         {
             dashCoolDown -= Time.deltaTime;
@@ -62,14 +62,24 @@ public class PlayerController : MonoBehaviour
                 toungCoolDown = 0.75f;
             }
         }
+
         if (!isClimbing)
         {
             transform.Translate(Vector3.forward * speed * verticalInput * Time.deltaTime);
-            if (Input.GetKeyDown(KeyCode.E) && !isClimbing && canDash)
+            if (Input.GetKeyDown(KeyCode.E) && canDash && verticalInput != 0)
             {
-                dashEffect.Play(); dashEffect2.Play();
-                transform.Translate(Vector3.forward * speed * verticalInput * Time.deltaTime * dashSpeed);
-                dashEffect.transform.Translate(Vector3.back * speed * verticalInput * Time.deltaTime * dashSpeed);
+                dashEffect.Play();
+                dashEffect2.Play();
+                if(verticalInput > 0)
+                {
+                    transform.Translate(Vector3.forward * Time.deltaTime * speed * dashSpeed);
+                    dashEffect.transform.Translate(Vector3.back * Time.deltaTime * speed * dashSpeed);
+                } else
+                {
+                    transform.Translate(Vector3.back * Time.deltaTime * speed * dashSpeed);
+                    dashEffect.transform.Translate(Vector3.forward * Time.deltaTime * speed * dashSpeed);
+                }
+    
                 canDash = false;
             }
             if (Input.GetKeyDown(KeyCode.Space) && canJump)
@@ -85,12 +95,11 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetMouseButton(0) && canAttack && !isClimbing)
         {
-            isAttacking = true;
             canAttack = false;
             toungState = "Extending";
         }
 
-        if(isAttacking)
+        if(toungState != "Idle")
         {
             if(toungState == "Extending")
             {
@@ -108,35 +117,47 @@ public class PlayerController : MonoBehaviour
             if(toung.localPosition.z <= 0)
             {
                 toung.localPosition = Vector3.zero;
-                isAttacking = false;
+                toungState = "Idle";
             }
+        }
+
+        if (isClimbing)
+        {
+            rb.useGravity = false;
+            canJump = false;
+            canDash = false;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+        else
+        {
+            rb.useGravity = true;
+            canDash = true;
         }
     }
 
+    // Checks if the player is climbing
+
     private void OnCollisionEnter(Collision collision)
     {
+        canJump = true;
         if (collision.gameObject.CompareTag("climbable"))
         {
-            foreach(ContactPoint contact in collision.contacts)
+            foreach (ContactPoint contact in collision.contacts)
             {
-                if(Mathf.Abs(contact.normal.y) < wallNormalThreshold)
+                if (Mathf.Abs(contact.normal.y) < wallNormalThreshold)
                 {
                     isClimbing = true;
-                    rb.useGravity = false;
-                    rb.linearVelocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
                 }
                 else
                 {
-                    canJump = true;
+                    isClimbing = false;
                 }
             }
         }
         else
         {
             isClimbing = false;
-            rb.useGravity = true;
-            canJump = true;
         }
         lastCollision = collision;
     }
@@ -145,8 +166,6 @@ public class PlayerController : MonoBehaviour
         if(lastCollision.gameObject.CompareTag("climbable"))
         {
             isClimbing = false;
-            rb.useGravity = true;
-            canJump = false;
         }
     }
 
