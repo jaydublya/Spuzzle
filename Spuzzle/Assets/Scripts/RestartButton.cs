@@ -1,19 +1,16 @@
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor.UI;
 
-public class StartButton : MonoBehaviour
+public class RestartButton : MonoBehaviour
 {
-    public Button startButton;
     private GameManager gameManager;
-
+    public Button restartButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        startButton = GetComponent<Button>();
-
+        restartButton = GetComponent<Button>();
     }
 }
-

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject collectableGroup;
     public int healthPoints = 5;
     public bool isGamePaused;
+    public GameObject restartButton;
     
     //This Script will start the game when the Start Button is clicked, end the game when the Quit Button is clicked, will make the game restart when the restart button is clicked, and will make the Game Over screen appear when Gluey is dead
    
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
         gameOverScreen.SetActive(false);
         collectableGroup.SetActive(false);
         isGamePaused = false;
+
     }
 
 
@@ -33,8 +36,39 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             titleScreen.SetActive(false);
+            
         }
     }
 
-    
+    public void GameOver()
+    {
+        isGameActive = false;
+        gameOverScreen.gameObject.SetActive(true);
+
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log("Game Restarted");
+    }
+
+    public void StartGame()
+    {
+        isGameActive=true;
+        Debug.Log("Game Start");
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Game Ended");
+    }
+
+    public void PauseGame()
+    {
+        isGamePaused = true;
+        isGameActive = false;
+        pauseMenu.SetActive(true);
+        Debug.Log("Game Paused");
+    }
 }

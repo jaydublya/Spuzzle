@@ -1,16 +1,17 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class ItemIcons : MonoBehaviour
 {
-    public int health;
+    public List<GameObject> collectables;
     private GameManager gameManager;
-
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        health = gameManager.healthPoints;
     }
 
     // Update is called once per frame
@@ -19,17 +20,7 @@ public class Health : MonoBehaviour
         if (gameManager.isGameActive)
         {
             
-
-        } else if (gameManager.isGamePaused)
-        {
-
-
-        } else
-        {
-            Destroy(gameObject);
+           
         }
     }
-
-
-
 }
