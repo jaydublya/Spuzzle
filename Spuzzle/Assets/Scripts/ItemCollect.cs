@@ -4,21 +4,30 @@ public class ItemCollect : MonoBehaviour
 {
 
 
-    private int Item = 0;
+    public int Item = 0;
 
 
 
-
+     void Update()
+     {
+        if(Item == 4)
+        {
+            
+        }
+     }
     private void OnTriggerEnter(Collider other)
     {
         
-        if(other.transform.tag == "Item")
+        if(other.CompareTag("Collectible"))
         {
-            Item++;
             Debug.Log(Item);
             Destroy(other.gameObject);
+            AddItem();
         }
-
+        void AddItem()
+        {
+            Item++;
+        }
     }
 
 
