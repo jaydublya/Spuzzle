@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private Collision lastCollision;
 
     private GameObject body;
+    private AudioSource speaker;
 
 
     // Start is called before the first frame update
@@ -181,5 +182,12 @@ public class PlayerController : MonoBehaviour
             isClimbing = false;
         }
     }
-
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("newSongZone"))
+        {
+            gameManager.SwitchMusicTrack(speaker);
+            Destroy(other.gameObject);
+        }
+    }
 }

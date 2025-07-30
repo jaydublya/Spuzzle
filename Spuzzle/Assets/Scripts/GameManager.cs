@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,9 @@ public class GameManager : MonoBehaviour
     public int healthPoints = 5;
     public bool isGamePaused;
     public GameObject restartButton;
+
+    public AudioClip songTwo;
+    public AudioSource speaker;
     
     //This Script will start the game when the Start Button is clicked, end the game when the Quit Button is clicked, will make the game restart when the restart button is clicked, and will make the Game Over screen appear when Gluey is dead
    
@@ -81,5 +85,16 @@ public class GameManager : MonoBehaviour
         isGameActive=true;
         Debug.Log("Game Unpaused");
         pauseMenu.SetActive(false);
+    }
+    public void SwitchMusicTrack(AudioSource currentSpeaker)
+    {
+        currentSpeaker.Stop();
+        currentSpeaker.clip = songTwo;
+        currentSpeaker.Play();
+    }
+
+    internal void SwitchMusicTrack(object speaker)
+    {
+        throw new NotImplementedException();
     }
 }
