@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             titleScreen.SetActive(false);
+            
         }
     }
 
@@ -58,4 +59,16 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Start");
     }
 
+    public void QuitGame()
+    {
+        Debug.Log("Game Ended");
+    }
+
+    public void PauseGame()
+    {
+        isGamePaused = true;
+        isGameActive = false;
+        pauseMenu.SetActive(true);
+        Debug.Log("Game Paused");
+    }
 }

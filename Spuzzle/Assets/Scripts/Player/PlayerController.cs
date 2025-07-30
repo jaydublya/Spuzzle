@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 
     public Transform toung;
 
+    private GameManager gameManager;
+
     public float speed;
     public float dashSpeed = 30;
     public float rotationSpeed;
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         body = GameObject.Find("Body");
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -43,96 +46,106 @@ public class PlayerController : MonoBehaviour
     {
         float verticalInput = Input.GetAxis("Vertical");
 
-        if(!canDash)
+        if (Input.GetKeyDown(KeyCode.Escape) && gameManager.isGameActive)
         {
-            dashCoolDown -= Time.deltaTime;
-            if(dashCoolDown <= 0)
-            {
-                canDash = true;
-                dashCoolDown = 1.0f;
-                dashEffect.transform.localPosition = Vector3.zero;
-            }
-        }
-        if(!canAttack)
-        {
-            toungCoolDown -= Time.deltaTime;
-            if(toungCoolDown <= 0)
-            {
-                canAttack = true;
-                toungCoolDown = 0.75f;
-            }
+            gameManager.PauseGame();
         }
 
-        if (!isClimbing)
+        if(gameManager.isGameActive)
         {
-            transform.Translate(Vector3.forward * speed * verticalInput * Time.deltaTime);
-            if (Input.GetKeyDown(KeyCode.E) && canDash && verticalInput != 0)
+            if (!canDash)
             {
-                dashEffect.Play();
-                dashEffect2.Play();
-                if(verticalInput > 0)
+                dashCoolDown -= Time.deltaTime;
+                if (dashCoolDown <= 0)
                 {
-                    transform.Translate(Vector3.forward * Time.deltaTime * speed * dashSpeed);
-                    dashEffect.transform.Translate(Vector3.back * Time.deltaTime * speed * dashSpeed);
-                } else
-                {
-                    transform.Translate(Vector3.back * Time.deltaTime * speed * dashSpeed);
-                    dashEffect.transform.Translate(Vector3.forward * Time.deltaTime * speed * dashSpeed);
+                    canDash = true;
+                    dashCoolDown = 1.0f;
+                    dashEffect.transform.localPosition = Vector3.zero;
                 }
-    
-                canDash = false;
             }
-            if (Input.GetKeyDown(KeyCode.Space) && canJump)
+            if (!canAttack)
             {
-                rb.AddForce(Vector3.up * Time.deltaTime * jumpForce, ForceMode.Impulse);
+                toungCoolDown -= Time.deltaTime;
+                if (toungCoolDown <= 0)
+                {
+                    canAttack = true;
+                    toungCoolDown = 0.75f;
+                }
+            }
+
+            if (!isClimbing)
+            {
+                transform.Translate(Vector3.forward * speed * verticalInput * Time.deltaTime);
+                if (Input.GetKeyDown(KeyCode.E) && canDash && verticalInput != 0)
+                {
+                    dashEffect.Play();
+                    dashEffect2.Play();
+                    if (verticalInput > 0)
+                    {
+                        transform.Translate(Vector3.forward * Time.deltaTime * speed * dashSpeed);
+                        dashEffect.transform.Translate(Vector3.back * Time.deltaTime * speed * dashSpeed);
+                    }
+                    else
+                    {
+                        transform.Translate(Vector3.back * Time.deltaTime * speed * dashSpeed);
+                        dashEffect.transform.Translate(Vector3.forward * Time.deltaTime * speed * dashSpeed);
+                    }
+
+                    canDash = false;
+                }
+                if (Input.GetKeyDown(KeyCode.Space) && canJump)
+                {
+                    rb.AddForce(Vector3.up * Time.deltaTime * jumpForce, ForceMode.Impulse);
+                    canJump = false;
+                }
+            }
+            else
+            {
+                transform.Translate(Vector3.up * speed * verticalInput * Time.deltaTime);
+            }
+            body.transform.Rotate(Vector3.right, verticalInput * rotationSpeed * speed * Time.deltaTime);
+
+            if (Input.GetMouseButton(0) && canAttack && !isClimbing)
+            {
+                canAttack = false;
+                toungState = "Extending";
+            }
+
+            if (toungState != "Idle")
+            {
+                if (toungState == "Extending")
+                {
+                    toung.Translate(Vector3.up * toungSpeed * Time.deltaTime);
+                }
+                else if (toungState == "Retracting")
+                {
+                    toung.Translate(Vector3.up * -toungSpeed * Time.deltaTime);
+                }
+
+                if (toung.localPosition.z >= 2)
+                {
+                    toungState = "Retracting";
+                }
+                if (toung.localPosition.z <= 0)
+                {
+                    toung.localPosition = Vector3.zero;
+                    toungState = "Idle";
+                }
+            }
+
+            if (isClimbing)
+            {
+                rb.useGravity = false;
                 canJump = false;
+                canDash = false;
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
             }
-        } else
-        {
-            transform.Translate(Vector3.up * speed * verticalInput * Time.deltaTime);
-        }
-        body.transform.Rotate(Vector3.right, verticalInput * rotationSpeed * speed * Time.deltaTime);
-
-        if(Input.GetMouseButton(0) && canAttack && !isClimbing)
-        {
-            canAttack = false;
-            toungState = "Extending";
-        }
-
-        if(toungState != "Idle")
-        {
-            if(toungState == "Extending")
+            else
             {
-                toung.Translate(Vector3.up * toungSpeed * Time.deltaTime);
+                rb.useGravity = true;
+                canDash = true;
             }
-            else if(toungState == "Retracting")
-            {
-                toung.Translate(Vector3.up * -toungSpeed * Time.deltaTime);
-            }
-
-            if (toung.localPosition.z >= 2)
-            {
-                toungState = "Retracting";
-            }
-            if(toung.localPosition.z <= 0)
-            {
-                toung.localPosition = Vector3.zero;
-                toungState = "Idle";
-            }
-        }
-
-        if (isClimbing)
-        {
-            rb.useGravity = false;
-            canJump = false;
-            canDash = false;
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-        }
-        else
-        {
-            rb.useGravity = true;
-            canDash = true;
         }
     }
 
