@@ -2050,8 +2050,9 @@ GameObject:
   - component: {fileID: 538598862}
   - component: {fileID: 538598864}
   - component: {fileID: 538598863}
+  - component: {fileID: 538598865}
   m_Layer: 5
-  m_Name: Duck Tape
+  m_Name: Duck Tape Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2111,6 +2112,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538598861}
   m_CullTransparentMesh: 1
+--- !u!114 &538598865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538598861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0c55289a790e42abd8c6efab1290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectables:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &573299246
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,8 +3486,9 @@ GameObject:
   - component: {fileID: 933020941}
   - component: {fileID: 933020943}
   - component: {fileID: 933020942}
+  - component: {fileID: 933020944}
   m_Layer: 5
-  m_Name: Wires
+  m_Name: Wire Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3528,6 +3548,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933020940}
   m_CullTransparentMesh: 1
+--- !u!114 &933020944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933020940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0c55289a790e42abd8c6efab1290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectables: []
 --- !u!1 &967582157
 GameObject:
   m_ObjectHideFlags: 0
@@ -3881,7 +3914,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5cd2c6319a8e0954791775ad1489e61e, type: 2}
     - target: {fileID: 919132149155446097, guid: 91e0058c7124ae54c95899ad873dd778, type: 3}
       propertyPath: m_Name
-      value: ship_broken
+      value: Ship_Broken
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 91e0058c7124ae54c95899ad873dd778, type: 3}
       propertyPath: m_TagString
@@ -3937,8 +3970,9 @@ GameObject:
   - component: {fileID: 1073224375}
   - component: {fileID: 1073224377}
   - component: {fileID: 1073224376}
+  - component: {fileID: 1073224378}
   m_Layer: 5
-  m_Name: Sheet Metal
+  m_Name: Sheet Metal Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3998,6 +4032,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073224374}
   m_CullTransparentMesh: 1
+--- !u!114 &1073224378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073224374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0c55289a790e42abd8c6efab1290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectables: []
 --- !u!1001 &1089746987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6031,8 +6078,9 @@ GameObject:
   - component: {fileID: 1794680154}
   - component: {fileID: 1794680156}
   - component: {fileID: 1794680155}
+  - component: {fileID: 1794680157}
   m_Layer: 5
-  m_Name: Battery
+  m_Name: Battery Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6092,6 +6140,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794680153}
   m_CullTransparentMesh: 1
+--- !u!114 &1794680157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794680153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0c55289a790e42abd8c6efab1290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectables: []
 --- !u!1 &1816280048
 GameObject:
   m_ObjectHideFlags: 0
