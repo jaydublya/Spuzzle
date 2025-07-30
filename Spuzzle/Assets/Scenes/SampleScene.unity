@@ -6799,7 +6799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ea07cd9de59384f99295fee63fba09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButton: {fileID: 0}
+  startButton: {fileID: 2109226730}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -16,6 +16,10 @@ public class StartButton : MonoBehaviour
         startButton.onClick.AddListener(StartGame);
     }
 
-
+    public void StartGame()
+    {
+        Debug.Log("Game Start");
+        gameManager.isGameActive = true;
+    }
 }
 

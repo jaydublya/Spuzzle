@@ -52,9 +52,5 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Restarted");
     }
 
-    public void StartGame()
-    {
-        Debug.Log("Game Start");
-        isGameActive = true;
-    }
+
 }
