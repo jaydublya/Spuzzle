@@ -10,6 +10,8 @@ TagManager:
   - Collectable
   - Enemy
   - duck
+  - Battery
+  - newSongZone
   layers:
   - Default
   - TransparentFX

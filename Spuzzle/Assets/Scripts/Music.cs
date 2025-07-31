@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class Music : MonoBehaviour
 {
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void start()
-    {
+    public GameManager gm;
+    public GameObject Battery;
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Battery"))
+        {
+            gm.SwitchMusicTrack();
+            Destroy(other.gameObject);
+        }
     }
 }
