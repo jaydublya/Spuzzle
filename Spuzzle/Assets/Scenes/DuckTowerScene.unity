@@ -4923,7 +4923,7 @@ Transform:
   m_GameObject: {fileID: 1299721522}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.97202355, z: -0, w: 0.23488365}
-  m_LocalPosition: {x: 108.63, y: -1.6, z: 114.92}
+  m_LocalPosition: {x: -12.62, y: -0.2, z: -190.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5147,6 +5147,9 @@ MonoBehaviour:
   healthPoints: 5
   isGamePaused: 0
   restartButton: {fileID: 1467782088}
+  healthText: {fileID: 0}
+  songTwo: {fileID: 0}
+  speaker: {fileID: 0}
 --- !u!4 &1365972645
 Transform:
   m_ObjectHideFlags: 0
@@ -7317,6 +7320,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 745165623846351140, guid: 8531344140df7b0459c646c1d17273fe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.2
+      objectReference: {fileID: 0}
     - target: {fileID: 948983423223944046, guid: 8531344140df7b0459c646c1d17273fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: -64.35297
@@ -7356,6 +7363,18 @@ PrefabInstance:
     - target: {fileID: 948983423223944046, guid: 8531344140df7b0459c646c1d17273fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573594184182690553, guid: 8531344140df7b0459c646c1d17273fe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -26.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965675540997538479, guid: 8531344140df7b0459c646c1d17273fe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965675540997538479, guid: 8531344140df7b0459c646c1d17273fe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.59
       objectReference: {fileID: 0}
     - target: {fileID: 8730504606701156422, guid: 8531344140df7b0459c646c1d17273fe, type: 3}
       propertyPath: m_Name
