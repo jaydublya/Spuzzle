@@ -65,7 +65,7 @@ public class ItemIcons : MonoBehaviour
             else if (cogCollected)
             {
                 cogIcon.SetActive(true);
-                cogVariable = 1;
+                cogVariable += 1;
                 Debug.Log("Cogwheel Collected");
             }
 

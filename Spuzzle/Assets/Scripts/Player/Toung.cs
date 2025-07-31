@@ -3,7 +3,6 @@ using UnityEngine;
 public class Toung : MonoBehaviour
 {
     public GameObject[] items;
-    public AudioSource lickSFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,8 +18,9 @@ public class Toung : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("Lickable")) return;
-        Destroy(other.gameObject);
-        lickSFX.Play();
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyRobot>().health -= 1;
+        }
     }
 }
