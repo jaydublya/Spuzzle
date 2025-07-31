@@ -10,11 +10,11 @@ public class GameManager : MonoBehaviour
     public int itemsCollected;
     public GameObject pauseMenu;
     public GameObject gameOverScreen;
-    public GameObject collectableGroup;
     public int healthPoints = 5;
     public bool isGamePaused;
     public GameObject restartButton;
     public TextMeshProUGUI healthText;
+    private ItemIcons itemIcon;
 
     public AudioClip songTwo;
     public AudioSource speaker;
@@ -30,9 +30,13 @@ public class GameManager : MonoBehaviour
         itemsCollected = 0;
         pauseMenu.SetActive(false);
         gameOverScreen.SetActive(false);
-        collectableGroup.SetActive(false);
         isGamePaused = false;
-
+        itemIcon = GameObject.Find("Collectables").GetComponent<ItemIcons>();
+        itemIcon.batteryIcon.SetActive(false);
+        itemIcon.metalIcon.SetActive(false);
+        itemIcon.wireIcon.SetActive(false);
+        itemIcon.tapeIcon.SetActive(false);
+        itemIcon.cogIcon.SetActive(false);
     }
 
 

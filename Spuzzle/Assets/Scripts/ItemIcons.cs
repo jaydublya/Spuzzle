@@ -42,26 +42,31 @@ public class ItemIcons : MonoBehaviour
             {
                 batteryIcon.SetActive(true);
                 batteryVariable = 1;
+                Debug.Log("Battery Collected");
             }
             else if (metalCollected)
             {
                 metalIcon.SetActive(true);
                 metalVariable = metalVariable + 1;
+                Debug.Log("Metal Collected");
             }
             else if (wireCollected)
             {
                 wireIcon.SetActive(true);
                 wireVariable = wireVariable + 1;
+                Debug.Log("Wires Collected");
             }
             else if (tapeCollected == true)
             {
                 tapeIcon.SetActive(true);
                 tapeVariable = 1;
+                Debug.Log("Duck Tape Collected");
             }
             else if (cogCollected)
             {
                 cogIcon.SetActive(true);
                 cogVariable = 1;
+                Debug.Log("Cogwheel Collected");
             }
 
         }
