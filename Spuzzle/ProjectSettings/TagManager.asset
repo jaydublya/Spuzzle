@@ -9,6 +9,7 @@ TagManager:
   - HealthIcon
   - Collectable
   - Enemy
+  - duck
   layers:
   - Default
   - TransparentFX

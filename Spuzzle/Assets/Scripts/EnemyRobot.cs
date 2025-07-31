@@ -29,7 +29,7 @@ public class EnemyRobot : MonoBehaviour
     }
     
     //Trigger fire projectile when enter with box collider
-    private void OnTriggerEnter(SphereCollider Other)
+    private void OnTriggerEnter(Collider Other)
     {
         if(Other.CompareTag("Player"))
         {
