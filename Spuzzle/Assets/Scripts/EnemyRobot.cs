@@ -14,7 +14,7 @@ public class EnemyRobot : MonoBehaviour
     public GameObject player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()s
+    void Start()
     {
         GameObject.Find("Player");
         itemType = Random.Range(1, 2);
