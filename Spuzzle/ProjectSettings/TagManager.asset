@@ -9,6 +9,9 @@ TagManager:
   - HealthIcon
   - Collectable
   - Enemy
+  - duck
+  - Battery
+  - cog
   layers:
   - Default
   - TransparentFX

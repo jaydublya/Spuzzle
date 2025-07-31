@@ -89,15 +89,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Unpaused");
         pauseMenu.SetActive(false);
     }
-    public void SwitchMusicTrack(AudioSource currentSpeaker)
+    public void SwitchMusicTrack()
     {
-        currentSpeaker.Stop();
-        currentSpeaker.clip = songTwo;
-        currentSpeaker.Play();
-    }
-
-    internal void SwitchMusicTrack(object speaker)
-    {
-        throw new NotImplementedException();
+        speaker.Stop();
+        speaker.clip = songTwo;
+        speaker.Play();
     }
 }

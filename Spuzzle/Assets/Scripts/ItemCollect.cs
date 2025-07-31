@@ -5,7 +5,7 @@ public class ItemCollect : MonoBehaviour
 
 
     public int Item = 0;
-
+    private ItemIcons itemIcon;
 
 
      void Update()
@@ -16,17 +16,37 @@ public class ItemCollect : MonoBehaviour
         }
      }
     private void OnTriggerEnter(Collider other)
+
     {
-        
-        if(other.CompareTag("Collectible"))
+        if (other.gameObject.CompareTag("cog"))
         {
-            Debug.Log(Item);
             Destroy(other.gameObject);
-            AddItem();
+            itemIcon.cogCollected = true;
         }
-        void AddItem()
+        if (other.gameObject.CompareTag("Wire"))
         {
-            Item++;
+            Destroy(other.gameObject);
+            itemIcon.wireCollected = true;
         }
+        if (other.gameObject.CompareTag("metal"))
+        {
+            Destroy(other.gameObject);
+            itemIcon.metalCollected = true;
+        }
+        if (other.gameObject.CompareTag("battery"))
+        {
+            Destroy(other.gameObject);
+            itemIcon.batteryCollected = true;
+        }
+        if (other.gameObject.CompareTag("duck"))
+        {
+            Destroy(other.gameObject);
+            itemIcon.tapeCollected = true;
+        }
+    }
+
+     void Start()
+    {
+        itemIcon = GameObject.Find("Collectables").GetComponent<ItemIcons>();
     }
 }
