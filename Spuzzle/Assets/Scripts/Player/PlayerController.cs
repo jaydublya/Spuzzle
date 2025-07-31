@@ -184,7 +184,7 @@ public class PlayerController : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("newSongZone"))
+        if(other.CompareTag("newSongZone"))  
         {
             gameManager.SwitchMusicTrack(speaker);
             Destroy(other.gameObject);
