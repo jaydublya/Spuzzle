@@ -1118,6 +1118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 203128996}
+  - component: {fileID: 203128997}
   m_Layer: 0
   m_Name: Collectables
   m_TagString: Untagged
@@ -1145,6 +1146,34 @@ Transform:
   - {fileID: 963681892}
   m_Father: {fileID: 747827626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &203128997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203128995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0c55289a790e42abd8c6efab1290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectables:
+  - {fileID: 1794680153}
+  - {fileID: 1073224374}
+  - {fileID: 933020940}
+  - {fileID: 538598861}
+  - {fileID: 963681891}
+  batteryIcon: {fileID: 1794680153}
+  metalIcon: {fileID: 1073224374}
+  wireIcon: {fileID: 933020940}
+  tapeIcon: {fileID: 538598861}
+  cogIcon: {fileID: 963681891}
+  batteryCollected: 0
+  metalCollected: 0
+  wireCollected: 0
+  tapeCollected: 0
+  cogCollected: 0
 --- !u!65 &218140528
 BoxCollider:
   m_ObjectHideFlags: 0
