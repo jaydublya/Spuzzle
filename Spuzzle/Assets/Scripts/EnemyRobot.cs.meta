@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: 171ce40b4ce2ad74e82755b06578c968
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - wiresPrefab: {fileID: 8201765169251517330, guid: 53c5613577f158947841b582fcc1b55f, type: 3}
+  - sheetMetalPrefab: {instanceID: 0}
+  - playerControllerScript: {instanceID: 0}
+  - player: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

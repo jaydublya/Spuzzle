@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public bool canJump;
     public bool canDash = true;
     public bool canAttack = true;
+    public bool hasBattery = false;
 
 
 
@@ -181,6 +182,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             isClimbing = false;
+        }
+        if(collision.gameObject.CompareTag("Battery"))
+        {
+            Destroy(collision.gameObject);
+            hasBattery = true;
         }
         lastCollision = collision;
     }
