@@ -5,7 +5,7 @@ public class EnemyYeulg : MonoBehaviour
 {
     private Rigidbody enemyRb;
     private GameObject Player;
-    public float Speed = 140f;
+    public float Speed = 500f;
     public Vector3 lookDirection;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -39,9 +39,9 @@ public class DashAttack : MonoBehaviour
             ReastDash();
             yield return new WaitForSeconds(1.0f);
             SlowDown();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.0f);
             ReastDash();
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(12f);
         }
     }
 
@@ -52,8 +52,6 @@ public class DashAttack : MonoBehaviour
 
     private void Dash(float speedForce)
     {
-        Debug.Log("If you're reading this and Yeulg sped up then it work properly");
-
         rb.AddForce(pm.lookDirection * speedForce, ForceMode.Impulse);
     }
 
