@@ -3,6 +3,7 @@ using UnityEngine;
 public class Toung : MonoBehaviour
 {
     public GameObject[] items;
+    public AudioSource lickSFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,6 +21,6 @@ public class Toung : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Lickable")) return;
         Destroy(other.gameObject);
-
+        lickSFX.Play();
     }
 }
