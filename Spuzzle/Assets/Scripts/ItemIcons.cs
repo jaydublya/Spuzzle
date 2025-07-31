@@ -31,7 +31,7 @@ public class ItemIcons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.isGameActive)
+        if (gameManager.isGameActive && !gameManager.isGamePaused)
         {
             if (batteryCollected)
             {

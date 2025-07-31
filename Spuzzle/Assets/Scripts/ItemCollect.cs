@@ -18,44 +18,34 @@ public class ItemCollect : MonoBehaviour
     private void OnTriggerEnter(Collider other)
 
     {
-        if (other.gameObject.CompareTag ("cog"))
+        if (other.gameObject.CompareTag("cog"))
         {
             Destroy(other.gameObject);
-            itemIcon.cogCollected= true;
+            itemIcon.cogCollected = true;
         }
-        if (other.gameObject.CompareTag ("Wire"))
+        if (other.gameObject.CompareTag("Wire"))
         {
             Destroy(other.gameObject);
-            itemIcon.wireCollected= true;
+            itemIcon.wireCollected = true;
         }
-            if (other.gameObject.CompareTag ("metal")) 
-        { 
-         Destroy(other.gameObject);
+        if (other.gameObject.CompareTag("metal"))
+        {
+            Destroy(other.gameObject);
             itemIcon.metalCollected = true;
         }
-        if (other.gameObject.CompareTag ("battery")) 
+        if (other.gameObject.CompareTag("battery"))
         {
-         Destroy(other.gameObject);
+            Destroy(other.gameObject);
             itemIcon.batteryCollected = true;
         }
-       if (other.gameObject.CompareTag ("duck"))
+        if (other.gameObject.CompareTag("duck"))
         {
             Destroy(other.gameObject);
             itemIcon.tapeCollected = true;
         }
-        if(other.CompareTag("Collectible"))
-        {
-            Debug.Log(Item);
-            Destroy(other.gameObject);
-            AddItem();
-        }
-        void AddItem()
-        {
-            Item++;
-        }
     }
 
-    private void Start()
+     void Start()
     {
         itemIcon = GameObject.Find("Collectables").GetComponent<ItemIcons>();
     }
