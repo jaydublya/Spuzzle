@@ -21,7 +21,7 @@ public class EnemyRobot : MonoBehaviour
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
         transform.Translate(lookDirection * speed * Time.deltaTime);
 
-        if(health <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
@@ -30,7 +30,7 @@ public class EnemyRobot : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             playerControllerScript.health -= 1;
         }
