@@ -18,8 +18,9 @@ public class Toung : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("Lickable")) return;
-        Destroy(other.gameObject);
-
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyRobot>().health -= 1;
+        }
     }
 }

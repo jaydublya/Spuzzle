@@ -110,6 +110,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetMouseButton(0) && canAttack && !isClimbing)
             {
+                toung.localPosition = Vector3.zero;
                 canAttack = false;
                 toungState = "Extending";
             }
@@ -131,7 +132,7 @@ public class PlayerController : MonoBehaviour
                 }
                 if (toung.localPosition.z <= 0)
                 {
-                    toung.localPosition = Vector3.zero;
+                    toung.localPosition = new Vector3(0, -1000, 0);
                     toungState = "Idle";
                 }
             }
@@ -149,6 +150,11 @@ public class PlayerController : MonoBehaviour
                 rb.useGravity = true;
                 canDash = true;
             }
+        }
+
+        if(health <= 0)
+        {
+            //Code for dying goes here
         }
     }
 
