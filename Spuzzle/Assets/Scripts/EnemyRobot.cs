@@ -2,39 +2,45 @@ using UnityEngine;
 
 public class EnemyRobot : MonoBehaviour
 {
-    public float speed = 50.0f;
-    private Rigidbody enemyRb;
-    private GameObject player;
-    public GameObject projectilePrefab;
-    private float startDelay = 2;
-    private float fireRate = 3;
-    public bool startFire;
+    public float speed = 10.0f;
+
+    public int health;
+
+    public PlayerController playerControllerScript;
+    public GameObject player;
+
+    private GameManager gameManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        startFire = false;
-        enemyRb = GetComponent<Rigidbody>();
-        player = GameObject.Find("Player");
-        if(startFire == true)
-        {
-            InvokeRepeating("private void OnTriggerEnter(Collider Other)", startDelay, fireRate);
-        }   
+        GameObject.Find("Player");
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     //Move towards the player
     void Update()
     {
-        Vector3 lookDirection = (player.transform.position - transform.position).normalized;
-        enemyRb.AddForce(lookDirection * speed * Time.deltaTime);
-    }
-    
-    //Trigger fire projectile when enter with box collider
-    private void OnTriggerEnter(SphereCollider Other)
-    {
-        if(Other.CompareTag("Player"))
+        if (gameManager.isGameActive)
         {
-            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
-            startFire = true;
+            Vector3 lookDirection = (player.transform.position - transform.position).normalized;
+            transform.Translate(lookDirection * speed * Time.deltaTime);
+
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+            transform.position = new Vector3(transform.position.x, -1, transform.position.z);
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            playerControllerScript.health -= 1;
         }
     }
 }

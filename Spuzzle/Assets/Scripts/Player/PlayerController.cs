@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public float dashCoolDown = 1.5f;
     public float toungCoolDown = 0.75f;
 
+    public int health = 4;
+
     public string toungState = "Idle";
 
     public bool isClimbing = false;
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private Collision lastCollision;
 
     private GameObject body;
+    public AudioSource speaker;
 
 
     // Start is called before the first frame update
@@ -181,5 +184,4 @@ public class PlayerController : MonoBehaviour
             isClimbing = false;
         }
     }
-
 }
