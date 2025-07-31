@@ -25,7 +25,7 @@ public class SettingsButton : MonoBehaviour
         if (!itemIcon.cogCollected)
         {
             Instantiate(cogWheel);
-            cogWheel.transform.Translate(1,0,0);
+            cogWheel.transform.Translate(1, 0, 0 );
         }
     }
 
