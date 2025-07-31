@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             titleScreen.SetActive(false);
-            //healthText.text = "Health: " + healthPoints;
+            healthText.text = "Health: " + healthPoints;
 
         }
     }
