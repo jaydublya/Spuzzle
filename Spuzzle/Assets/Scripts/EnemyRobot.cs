@@ -3,6 +3,10 @@ using UnityEngine;
 public class EnemyRobot : MonoBehaviour
 {
     public float speed = 10.0f;
+    public int itemType;
+
+    public GameObject wiresPrefab;
+    public GameObject sheetMetalPrefab;
 
     public int health;
 
@@ -13,6 +17,7 @@ public class EnemyRobot : MonoBehaviour
     void Start()
     {
         GameObject.Find("Player");
+        itemType = Random.Range(1, 2);
     }
 
     //Move towards the player
@@ -23,7 +28,17 @@ public class EnemyRobot : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            if (itemType == 1)
+            {
+                Instantiate(wiresPrefab);
+                Destroy(gameObject);
+            }
+            else if (itemType == 2)
+            {
+                Instantiate(sheetMetalPrefab);
+                Destroy(gameObject);
+            }
+
         }
         transform.position = new Vector3(transform.position.x, -1, transform.position.z);
     }

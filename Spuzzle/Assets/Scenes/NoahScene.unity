@@ -9425,6 +9425,7 @@ MonoBehaviour:
   toungSpeed: 17
   dashCoolDown: 2
   toungCoolDown: 0.5
+  health: 4
   toungState: 
   isClimbing: 0
   canJump: 0
@@ -13403,6 +13404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e706c9cd47eac4ca61ac9941452e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Item: 0
 --- !u!1 &2002924244 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 80952840127831840a8d06ae75c9120f, type: 3}
@@ -14470,6 +14472,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5396565722194316236, guid: c450bfb566ba10d4da8c77e1abc1467b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1299721522}
+    - target: {fileID: 5396565722194316236, guid: c450bfb566ba10d4da8c77e1abc1467b, type: 3}
+      propertyPath: wiresPrefab
+      value: 
+      objectReference: {fileID: 8201765169251517330, guid: 53c5613577f158947841b582fcc1b55f, type: 3}
+    - target: {fileID: 5396565722194316236, guid: c450bfb566ba10d4da8c77e1abc1467b, type: 3}
+      propertyPath: sheetMetalPrefab
+      value: 
+      objectReference: {fileID: 1157063644236051272, guid: a6b0aa936ba50ea47b013daef096ca47, type: 3}
+    - target: {fileID: 5396565722194316236, guid: c450bfb566ba10d4da8c77e1abc1467b, type: 3}
+      propertyPath: playerControllerScript
+      value: 
+      objectReference: {fileID: 1299721526}
     - target: {fileID: 6184494542057564558, guid: c450bfb566ba10d4da8c77e1abc1467b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.64
@@ -14513,6 +14531,10 @@ PrefabInstance:
     - target: {fileID: 6816318606429565748, guid: c450bfb566ba10d4da8c77e1abc1467b, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878537002552134609, guid: c450bfb566ba10d4da8c77e1abc1467b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.83
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
