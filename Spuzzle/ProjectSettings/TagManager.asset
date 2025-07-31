@@ -12,6 +12,8 @@ TagManager:
   - duck
   - Battery
   - cog
+  - wires
+  - metal
   layers:
   - Default
   - TransparentFX
