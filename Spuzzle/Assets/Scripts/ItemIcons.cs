@@ -31,31 +31,45 @@ public class ItemIcons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    public void ItemGained()
+    {
         if (gameManager.isGameActive && !gameManager.isGamePaused)
         {
             if (batteryCollected)
             {
                 batteryIcon.SetActive(true);
                 batteryVariable = 1;
-            } else if(metalCollected)
+                Debug.Log("Battery Collected");
+            }
+            else if (metalCollected)
             {
                 metalIcon.SetActive(true);
                 metalVariable = metalVariable + 1;
-            } else if (wireCollected)
+                Debug.Log("Metal Collected");
+            }
+            else if (wireCollected)
             {
                 wireIcon.SetActive(true);
                 wireVariable = wireVariable + 1;
-            } else if (tapeCollected == true)
+                Debug.Log("Wires Collected");
+            }
+            else if (tapeCollected == true)
             {
                 tapeIcon.SetActive(true);
                 tapeVariable = 1;
-            } else if (cogCollected)
+                Debug.Log("Duck Tape Collected");
+            }
+            else if (cogCollected)
             {
                 cogIcon.SetActive(true);
-                cogVariable = 1;
+                cogVariable += 1;
+                Debug.Log("Cogwheel Collected");
             }
-
 
         }
     }
+
 }

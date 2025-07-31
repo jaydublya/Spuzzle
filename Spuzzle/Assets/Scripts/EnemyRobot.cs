@@ -3,44 +3,37 @@ using UnityEngine;
 public class EnemyRobot : MonoBehaviour
 {
     public float speed = 10.0f;
-    public int itemType;
-
-    public GameObject wiresPrefab;
-    public GameObject sheetMetalPrefab;
 
     public int health;
 
     public PlayerController playerControllerScript;
     public GameObject player;
 
+    private GameManager gameManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         GameObject.Find("Player");
-        itemType = Random.Range(1, 2);
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     //Move towards the player
     void Update()
     {
-        Vector3 lookDirection = (player.transform.position - transform.position).normalized;
-        transform.Translate(lookDirection * speed * Time.deltaTime);
-
-        if (health <= 0)
+        if (gameManager.isGameActive)
         {
-            if (itemType == 1)
-            {
-                Instantiate(wiresPrefab);
-                Destroy(gameObject);
-            }
-            else if (itemType == 2)
-            {
-                Instantiate(sheetMetalPrefab);
-                Destroy(gameObject);
-            }
+            Vector3 lookDirection = (player.transform.position - transform.position).normalized;
+            transform.Translate(lookDirection * speed * Time.deltaTime);
 
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+            transform.position = new Vector3(transform.position.x, -1, transform.position.z);
         }
-        transform.position = new Vector3(transform.position.x, -1, transform.position.z);
+
     }
 
     private void OnTriggerEnter(Collider other)
