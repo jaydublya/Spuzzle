@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class Toung : MonoBehaviour
+public class BossDamage : MonoBehaviour
 {
-    public GameObject[] items;
+    public int damage = 2;
+    public Health playerHealth;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,11 +17,11 @@ public class Toung : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.CompareTag("Enemy"))
+        if(collision.gameObject.tag == "Player")
         {
-            other.GetComponent<EnemyRobot>().health -= 1;
+            playerHealth.TakeDamage(damage);
         }
     }
 }

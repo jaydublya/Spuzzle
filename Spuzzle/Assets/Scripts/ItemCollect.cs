@@ -1,4 +1,5 @@
 using UnityEngine;
+using static ItemIcons;
 
 public class ItemCollect : MonoBehaviour
 {
@@ -17,33 +18,35 @@ public class ItemCollect : MonoBehaviour
         if (other.gameObject.CompareTag ("cog"))
         {
             Destroy(other.gameObject);
-            itemIcon.cogCollected= true;
-            itemIcon.ItemGained();
+            itemIcon.cogCollected = true;
+            itemIcon.ItemGained(ItemType.Cog);
         }
-        if (other.gameObject.CompareTag ("wires"))
-        {
-            Destroy(other.gameObject);
-            itemIcon.wireCollected= true;
-            itemIcon.ItemGained();
-        }
-        if (other.gameObject.CompareTag ("metal"))
-        {
-            Destroy(other.gameObject);
-            itemIcon.metalCollected = true;
-            itemIcon.ItemGained();
-        }
-        if (other.gameObject.CompareTag ("Battery")) 
+
+        else if (other.gameObject.CompareTag ("Battery")) 
         {
             Destroy(other.gameObject);
             itemIcon.batteryCollected = true;
-            itemIcon.ItemGained();
+            itemIcon.ItemGained(ItemType.Battery);
         }
-        if (other.gameObject.CompareTag ("duck"))
+         else if (other.gameObject.CompareTag ("duck"))
         {
             Destroy(other.gameObject);
             itemIcon.tapeCollected = true;
-            itemIcon.ItemGained();
+            itemIcon.ItemGained(ItemType.Tape);
         }
+        else if (other.gameObject.CompareTag("metal"))
+        {
+            Destroy(other.gameObject);
+            itemIcon.metalCollected = true;
+            itemIcon.ItemGained(ItemType.Metal);
+        }
+        else if (other.gameObject.CompareTag("wires"))
+        {
+            Destroy(other.gameObject);
+            itemIcon.wireCollected = true;
+            itemIcon.ItemGained(ItemType.Wire);
+        }
+
     }
 
     private void Start()

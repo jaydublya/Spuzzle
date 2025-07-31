@@ -1,13 +1,14 @@
 using UnityEngine;
 
-public class Toung : MonoBehaviour
+public class BossHealth : MonoBehaviour
 {
-    public GameObject[] items;
+    public int health;
+    public int maxHealth = 30;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -16,11 +17,13 @@ public class Toung : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void TakeDamage(int amount)
     {
-        if(other.gameObject.CompareTag("Enemy"))
+        health -= amount;
+
+        if(health <=0)
         {
-            other.GetComponent<EnemyRobot>().health -= 1;
+            Destroy(gameObject);
         }
     }
 }

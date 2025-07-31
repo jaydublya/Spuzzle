@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ItemIcons : MonoBehaviour
 {
-    public List<GameObject> collectables;
     private GameManager gameManager;
     public GameObject batteryIcon;
     public GameObject metalIcon;
@@ -22,6 +21,15 @@ public class ItemIcons : MonoBehaviour
     public float tapeVariable;
     public float cogVariable;
 
+    public enum ItemType
+    {
+        Battery,
+        Metal,
+        Wire,
+        Tape,
+        Cog
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,38 +42,38 @@ public class ItemIcons : MonoBehaviour
 
     }
 
-    public void ItemGained()
+    public void ItemGained(ItemType type)
     {
         if (gameManager.isGameActive && !gameManager.isGamePaused)
         {
-            if (batteryCollected)
+            if (type == ItemType.Battery)
             {
                 batteryIcon.SetActive(true);
                 batteryVariable = 1;
                 Debug.Log("Battery Collected");
             }
-            else if (metalCollected)
+            else if (type == ItemType.Metal)
             {
                 metalIcon.SetActive(true);
                 metalVariable = metalVariable + 1;
                 Debug.Log("Metal Collected");
             }
-            else if (wireCollected)
+            else if (type == ItemType.Wire)
             {
                 wireIcon.SetActive(true);
                 wireVariable = wireVariable + 1;
                 Debug.Log("Wires Collected");
             }
-            else if (tapeCollected == true)
+            else if (type == ItemType.Tape)
             {
                 tapeIcon.SetActive(true);
                 tapeVariable = 1;
                 Debug.Log("Duck Tape Collected");
             }
-            else if (cogCollected)
+            else if (type == ItemType.Cog)
             {
                 cogIcon.SetActive(true);
-                cogVariable = 1;
+                cogVariable += 1;
                 Debug.Log("Cogwheel Collected");
             }
 
