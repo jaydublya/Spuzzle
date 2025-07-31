@@ -4,13 +4,16 @@ public class ItemCollect : MonoBehaviour
 {
 
 
-   
+    public int Item = 0;
     private ItemIcons itemIcon;
 
 
      void Update()
      {
-        
+        if(Item == 4)
+        {
+            
+        }
      }
     private void OnTriggerEnter(Collider other)
 
@@ -40,7 +43,16 @@ public class ItemCollect : MonoBehaviour
             Destroy(other.gameObject);
             itemIcon.tapeCollected = true;
         }
-       
+        if(other.CompareTag("Collectible"))
+        {
+            Debug.Log(Item);
+            Destroy(other.gameObject);
+            AddItem();
+        }
+        void AddItem()
+        {
+            Item++;
+        }
     }
 
     private void Start()
