@@ -45,7 +45,7 @@ public class ItemIcons : MonoBehaviour
             {
                 wireIcon.SetActive(true);
                 wireVariable = wireVariable + 1;
-            } else if (tapeCollected)
+            } else if (tapeCollected == true)
             {
                 tapeIcon.SetActive(true);
                 tapeVariable = 1;
